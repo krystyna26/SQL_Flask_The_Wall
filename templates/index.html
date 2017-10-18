@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    <title>Registration form</title>
+</head>
+<body>
+    <div class=register>
+        <h1>Registration form</h1>
+        <form action='/register' method='POST'>
+        <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+        <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+        <label for="email">Email:<input type="text" name="email" id="email"></label>
+        <label for="password">Password:<input type="password" name="password" id="password"></label>
+        <label for="confirmpw">Confirn password:<input type="password" name="confirm" id="confirmpw"></label>
+        <input type="submit" value="SIGN IN">
+        </form>
+    </div>
+    <div class=login>
+        <h1>Log In</h1>
+        <form action='/login' method='POST'>
+        <label for="email">Email:<input type="text" name="email" id="email"></label>
+        <label for="password">Password:<input type="password" name="password" id="password"></label>
+        <input type="submit" value="LOG IN">
+        <div class=red>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <h1>{{message}}</h1>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+.wrapper{
+    width: 800px;
+    margin: 10px;
+}
+.nav{
+    height: 50px;
+    display: inline;
+}
+.register{
+    display: block;
+}
+
+.login{
+    display: block;
+}
+
+label{
+    display: block;
+}
+
+.messagearea{
+    width: 785px;
+    height: 61px;
+}
+.commentarea{
+    width: 585px;
+    height: 17px;
+    
+}
+h1{
+    margin: 0px;
+}
+h3{
+    margin: 6px;
+}
+h4{
+    text-align: justify;
+    margin: 6px;
+}
+h5{
+    margin: 6px;
+}
+h6{
+    margin: 0px;
+}
+
+p{
+    margin: 0px;
+}
+
+.comment{
+    padding: 10px;
+}
+.singlecomment{
+    margin-bottom: 17px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}"> -->
+    <title>Wall</title>
+</head>
+<body>
+    <div class=wrapper>
+                                                                                                                                                                                                                                                                                    <div class="modal-footer">
+            <h1>CodingDojo Wall</h1>
+            <h6>Welcome {{session['loggedName']}}</h6>
+            <p><a class="btn btn-secondary" href="/logof">log off</a></p>
+        </div>
+        <h1>Post only awsome message here!</h1>
+        <form action='/messages' method='POST'>
+            <input class=messagearea type="message" name="message" placeholder="message"> <!--request.form always takes from name -->
+            <input type="submit" value="Post a message">
+        </form>
+        <div class=messages>
+            {% if all_message %}
+                {% for message in all_message: %} <!-- all_xxx is object name, xxx is a single value -->
+                    <h3>{{message['name']}}  {{message['date']}} </h3>
+                    <h4>{{message['message']}}</h4>
+                    <form action='/delete' method='POST'>
+                        <input type="hidden" value="{{message['id']}}" name="hiddenmessageidDEL">
+                        <input type="submit" value="Delete">
+                    </form>
+                    <div class=comment>
+                    {% if all_comment %}
+                        {% for comment in all_comment: %}
+                            {% if comment['message_id'] == message['id']%}
+                            <div class=singlecomment>
+                                <h5>{{comment['first_name']}} {{comment['last_name']}}  {{comment['created_at']}}</h5>
+                                <p>{{comment['comment']}}</p>
+                            </div>
+                            {% endif %}
+                        {% endfor %} 
+                    {% endif %}
+                    </div>
+                    <form action='/comment' method='POST'>
+                        <input type="hidden" value="{{message['id']}}" name="hiddenmessageid">
+                        <input class=commentarea type="message" placeholder="Write a comment" name="comment">
+                        <input type="submit" value="Post a comment">
+                    </form>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+    </div> <!--end of wrapper -->
+</body>
+</html>
